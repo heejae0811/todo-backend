@@ -7,14 +7,14 @@ export class TodoRepository extends Repository<TodoEntity> {
     super(TodoEntity, datasource.createEntityManager());
   }
 
-  // @Post()
+  // @Post
   async createByTodo(createTodoDto): Promise<TodoEntity[]> {
     const newTodo = this.create(createTodoDto);
 
     return await this.save(newTodo);
   }
 
-  // @Get()
+  // @Get
   async findAllByTodo(): Promise<TodoEntity[]> {
     return await this.find();
   }
@@ -39,8 +39,13 @@ export class TodoRepository extends Repository<TodoEntity> {
     });
   }
 
-  // @Delete
+  // @Delete(':id')
   async deleteByTodo(id): Promise<void> {
     await this.delete(id);
+  }
+
+  // @Delete
+  async clearByTodo(): Promise<void> {
+    await this.clear();
   }
 }

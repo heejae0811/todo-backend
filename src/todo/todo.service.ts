@@ -23,7 +23,11 @@ export class TodoService {
     return this.todoRepository.updateByTodo(id, updateTodoDto);
   }
 
-  remove(id: number) {
+  delete(id: number) {
     return this.todoRepository.deleteByTodo(id);
+  }
+
+  clear() {
+    return this.todoRepository.clearByTodo();
   }
 }
